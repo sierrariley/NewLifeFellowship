@@ -1,9 +1,18 @@
 <!DOCTYPE html>
-<html>
-<header class="bg-white shadow-md fixed top-0 w-full z-50">
+<html> 
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Life Fellowship</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+  
+  </head>
+  <header class="bg-white shadow-md fixed top-0 w-full z-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
       
-      <!-- Logo or Church Name -->
+      <!-- Logo -->
       <div class="flex-shrink-0">
         <a href="index.html">
           <img class="h-10" src="images/logo.png" alt="New Life Fellowship Logo">
@@ -20,36 +29,44 @@
         <a href="give.html" class="text-gray-700 hover:text-green-700 font-semibold">Give</a>
       </nav>
   
-      <!-- Call to Action Button -->
+      <!-- Watch Live Button (Desktop) -->
       <div class="hidden md:block">
         <a href="https://www.youtube.com/@newlifefellowship4862" target="_blank" rel="noopener noreferrer" class="inline-block bg-green-800 text-white py-2 px-4 rounded hover:bg-green-500">
-            Watch Live
-          </a>
+          Watch Live
+        </a>
       </div>
   
       <!-- Mobile Hamburger Menu -->
       <div class="md:hidden flex items-center">
         <button id="mobile-menu-button" class="text-gray-700 focus:outline-none">
-          <!-- Hamburger icon (use Heroicons or FontAwesome) -->
           <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M4 6h16M4 12h16M4 18h16"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
           </svg>
         </button>
       </div>
+    </div>
   
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden flex-col bg-white px-6 py-4 space-y-2">
+      <a href="index.html" class="block text-gray-700 hover:text-green-700">Home</a>
+      <a href="about.html" class="block text-gray-700 hover:text-green-700">About</a>
+      <a href="events.html" class="block text-gray-700 hover:text-green-700">Events</a>
+      <a href="ministries.html" class="block text-gray-700 hover:text-green-700">Ministries</a>
+      <a href="contact.html" class="block text-gray-700 hover:text-green-700">Contact</a>
+      <a href="give.html" class="block text-gray-700 hover:text-green-700 font-semibold">Give</a>
     </div>
   </header>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Life Fellowship</title>
-    
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-  
-  </head>
-  <body>
+      <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>New Life Fellowship</title>
+        
+        <!-- Tailwind CSS CDN -->
+        <script src="https://cdn.tailwindcss.com"></script>
+      
+      </head>
+ 
+<body class="font-sans text-gray-800 pt-20">
   
  <!-- Ministries Hero Section -->
 <section class="pt-32 pb-16 px-8 bg-white text-center">
@@ -166,7 +183,18 @@
         </section>
   
   </section>
-  
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const menuBtn = document.getElementById('mobile-menu-button');
+      const mobileMenu = document.getElementById('mobile-menu');
+
+      if (menuBtn && mobileMenu) {
+        menuBtn.addEventListener('click', () => {
+          mobileMenu.classList.toggle('hidden');
+        });
+      }
+    });
+  </script>
   </body>
   <footer class="relative bg-center bg-cover text-white py-12" style="background-image: url('images/footer.jpg');">
     <!-- Dark overlay only on background -->
