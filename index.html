@@ -38,16 +38,15 @@
           </svg>
         </button>
       </div>
-          <!-- Mobile Hamburger Menu -->
-          <div class="md:hidden flex items-center">
-            <button id="mobile-menu-button" class="text-gray-700 focus:outline-none">
-              <!-- Hamburger icon (use Heroicons or FontAwesome) -->
-              <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M4 6h16M4 12h16M4 18h16"/>
-              </svg>
-            </button>
-          </div>
+      <!-- Mobile Menu Panel -->
+      <div id="mobile-menu" class="hidden md:hidden flex-col bg-white px-6 py-4 space-y-2">
+        <a href="index.html" class="block text-gray-700 hover:text-green-700">Home</a>
+        <a href="about.html" class="block text-gray-700 hover:text-green-700">About</a>
+        <a href="events.html" class="block text-gray-700 hover:text-green-700">Events</a>
+        <a href="ministries.html" class="block text-gray-700 hover:text-green-700">Ministries</a>
+        <a href="contact.html" class="block text-gray-700 hover:text-green-700">Contact</a>
+        <a href="give.html" class="block text-gray-700 hover:text-green-700 font-semibold">Give</a>
+      </div>
       
         </div>
       </header>
@@ -143,6 +142,14 @@
       </div>
     </section>
   
+  <script>
+    const menuBtn = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  </script>
   </body>
 
   <footer class="relative bg-center bg-cover text-white py-12" style="background-image: url('images/footer.jpg');">
