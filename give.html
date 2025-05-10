@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+    <header class="bg-white shadow-md fixed top-0 w-full z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
+          
+          <!-- Logo or Church Name -->
+          <div class="flex-shrink-0">
+            <a href="index.html">
+              <img class="h-10" src="images/logo.png" alt="New Life Fellowship Logo">
+            </a>
+          </div>
+      
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex space-x-8">
+        <a href="index.html" class="text-gray-700 hover:text-green-700">Home</a>
+        <a href="about.html" class="text-gray-700 hover:text-green-700">About</a>
+        <a href="events.html" class="text-gray-700 hover:text-green-700">Events</a>
+        <a href="ministries.html" class="text-gray-700 hover:text-green-700">Ministries</a>
+        <a href="contact.html" class="text-gray-700 hover:text-green-700">Contact</a>
+        <a href="give.html" class="text-gray-700 hover:text-green-700 font-semibold">Give</a>
+      </nav>
+  
+      <!-- Call to Action Button -->
+      <div class="hidden md:block">
+        <a href="https://www.youtube.com/@newlifefellowship4862" target="_blank" rel="noopener noreferrer" class="inline-block bg-green-800 text-white py-2 px-4 rounded hover:bg-green-500">
+            Watch Live
+          </a>
+      </div>
+  
+      <!-- Mobile Hamburger Menu -->
+      <div class="md:hidden flex items-center">
+        <button id="mobile-menu-button" class="text-gray-700 focus:outline-none">
+          <!-- Hamburger icon (use Heroicons or FontAwesome) -->
+          <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+      
+          <!-- Mobile Hamburger Menu -->
+          <div class="md:hidden flex items-center">
+            <button id="mobile-menu-button" class="text-gray-700 focus:outline-none">
+              <!-- Hamburger icon (use Heroicons or FontAwesome) -->
+              <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M4 6h16M4 12h16M4 18h16"/>
+              </svg>
+            </button>
+          </div>
+      
+        </div>
+      </header>
+      <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>New Life Fellowship</title>
+        
+        <!-- Tailwind CSS CDN -->
+        <script src="https://cdn.tailwindcss.com"></script>
+      
+      </head>
+      <body>
+
+        <!-- Give Hero Section -->
+<section class="pt-32 pb-16 px-8 bg-blue-50 text-center">
+    <h1 class="text-4xl md:text-5xl font-bold mb-4">Give</h1>
+    <p class="text-lg max-w-2xl mx-auto text-gray-600">
+      "Bring the whole tithe into the storehouse, that there may be food in my house. Test me in this," says the Lord Almighty, "and see if I will not throw open the floodgates of heaven and pour out so much blessing that there will not be room enough to store it." — Malachi 3:10
+    </p>
+  </section>
+
+<!-- Ways to Give Section -->
+<section class="py-16 px-8 bg-gray-900">
+    <div class="max-w-7xl mx-auto space-y-16">
+
+         <!-- Online Giving (centered below) -->
+        <div class="bg-white p-8 rounded-lg shadow-lg mb-10 hover:shadow-2xl transform hover:scale-105 transition">
+            <div class="flex items-center justify-center  mb-4">
+            <h2 class="text-3xl font-bold text-gray-900">Give Online</h2>
+            <img src="images/tithely.jpg" alt="Tithe.ly Logo" class="h-20 w-auto">
+            </div>
+            <p class="text-lg text-center text-gray-700">
+            Visit our online giving portal to donate securely by credit card or debit.
+            </p>
+            <div class="text-center mt-6">
+            <a href="https://give.tithe.ly/?formId=ec83d220-6864-11ee-90fc-1260ab546d11" target="_blank" rel="noopener noreferrer" class="inline-block bg-emerald-500 text-white py-2 px-6 rounded hover:bg-green-500">
+                Give Online
+            </a>
+            </div>
+        </div>
+      </div>
+  
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+  
+        <!-- E-Transfer -->
+        <div class="bg-amber-100 p-8 rounded-lg shadow-lg hover:shadow-2xl transform hover:scale-105 transition">
+          <h2 class="text-3xl font-bold mb-4 text-center text-gray-900">E-Transfer</h2>
+          <p class="text-lg text-center text-gray-700">
+            Send your donation via e-transfer to:
+          </p>
+          <div class="text-center relative group">
+            <button id="etransferEmail" onclick="copyEmail()" class="text-blue-600 font-semibold text-center w-full">
+              info@nlfwindsor.org
+            </button>
+            <span class="absolute -top-6 left-1/2 -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+              Copy?
+            </span>
+            <p id="copyStatus" class="text-sm text-green-700 mt-2 hidden">Email copied!</p>
+            </div>
+        </div>
+  
+        <!-- In Person Giving -->
+        <div class="bg-emerald-100 p-8 rounded-lg shadow-lg hover:shadow-2xl transform hover:scale-105 transition">
+          <h2 class="text-3xl font-bold mb-4 text-center text-gray-900">In Person</h2>
+          <p class="text-lg text-center text-gray-700">
+            You can give during any of our services by cash, cheque, debit, or credit.
+          </p>
+        </div>
+  
+      </div>
+  
+     
+  
+    </div>
+  </section>
+      <script>
+        function copyEmail() {
+          const email = document.getElementById('etransferEmail').innerText;
+          navigator.clipboard.writeText(email).then(() => {
+            const status = document.getElementById('copyStatus');
+            status.classList.remove('hidden');
+            setTimeout(() => status.classList.add('hidden'), 2000);
+          });
+        }
+      </script>
+      </body>
+
+      <footer class="relative bg-center bg-cover text-white py-12" style="background-image: url('images/footer.jpg');">
+        <!-- Dark overlay only on background -->
+        <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+      
+        <!-- Content stays bright above -->
+        <div class="relative z-10 max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
+      
+          <!-- Location -->
+          <div>
+            <h4 class="text-xl font-semibold mb-4">Location</h4>
+            <p>810 Mercer Street<br>Windsor, Ontario<br>N9A 1N3</p>
+            <a href="https://www.google.com/maps" target="_blank" class="text-blue-400 hover:text-blue-500 text-sm mt-2 inline-block">View on Google Maps</a>
+          </div>
+      
+          <!-- Contact -->
+          <div>
+            <h4 class="text-xl font-semibold mb-4">Contact</h4>
+            <p>Phone: 519-419-5365</p>
+            <p>Email: <a href="mailto:info@nlfwindsor.org" class="text-blue-400 hover:text-blue-500">info@nlfwindsor.org</a></p>
+          </div>
+      
+          <!-- Office Hours -->
+          <div>
+            <h4 class="text-xl font-semibold mb-4">Office Hours</h4>
+            <p>Tuesdays 7:00pm</p>
+            <p>Sundays 11:30am</p>
+          </div>
+      
+          <!-- Menu -->
+          <div>
+            <h4 class="text-xl font-semibold mb-4">Menu</h4>
+            <ul class="space-y-2">
+              <li><a href="index.html" class="hover:text-green-700">Home</a></li>
+              <li><a href="about.html" class="hover:text-green-700">About</a></li>
+              <li><a href="events.html" class="hover:text-green-700">Events</a></li>
+              <li><a href="ministries.html" class="hover:text-green-700">Ministries</a></li>
+              <li><a href="contact.html" class="hover:text-green-700">Contact</a></li>
+              <li><a href="give.html" class="hover:text-green-700">Give</a></li>
+            </ul>
+          </div>
+      
+        </div>
+      
+        <!-- Social Media Icons -->
+        <div class="relative z-10 mt-10 flex justify-center space-x-6">
+          <a href="https://www.facebook.com/NEWLIFEFELLOWSHIPCHURCHONLINE/" target="_blank" class="hover:text-blue-500">
+            <!-- Facebook Icon SVG -->
+            <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24">
+              <path d="M22 12c0-5.522-4.478-10-10-10S2 6.478 2 12c0 5.022 3.676 9.175 8.438 9.879v-6.987H7.898v-2.892h2.54V9.797c0-2.507 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562v1.875h2.773l-.443 2.892h-2.33v6.987C18.324 21.175 22 17.022 22 12z"/>
+            </svg>
+          </a>
+      
+          <a href="https://www.youtube.com/@newlifefellowship4862" target="_blank" class="hover:text-red-500">
+            <!-- YouTube Icon SVG -->
+            <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24">
+              <path d="M19.615 3.184C17.38 2.447 11.998 2.447 11.998 2.447s-5.382 0-7.617.737A4.49 4.49 0 002.184 6.56C1.447 8.796 1.447 12 1.447 12s0 3.204.737 5.44a4.49 4.49 0 002.197 3.376c2.235.737 7.617.737 7.617.737s5.382 0 7.617-.737a4.49 4.49 0 002.197-3.376c.737-2.236.737-5.44.737-5.44s0-3.204-.737-5.44a4.49 4.49 0 00-2.197-3.376zM10.998 15.569V8.431l6.001 3.569-6.001 3.569z"/>
+            </svg>
+          </a>
+        </div>
+      </footer>
+
+      </html>
