@@ -35,7 +35,7 @@ A modern, responsive website for New Life Fellowship Church built using HTML and
 
 ## 🌐 Live Demo
 
-👉 [Visit the live site](https://newlifefellowshipchurchwindsor.netlify.app)
+👉 [Visit the live site](https://newlifefellowshipchurchonline.org)
 
 ## 🙏 Developed by: [Sierra Riley](@sierrariley)
 
