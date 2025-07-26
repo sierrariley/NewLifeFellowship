@@ -76,6 +76,11 @@
         <button type="submit" class="bg-[#0c1a3c] text-white font-semibold px-6 py-2 rounded hover:bg-[#e4b13f] transition duration-300">Submit</button>
       </div>
       <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+      <script>
+  document.querySelector("form").addEventListener("submit", function () {
+    alert("Submitting form..."); // Just to prove it's firing
+  });
+</script>
     </form>
   </div>
 
