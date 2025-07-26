@@ -16,6 +16,7 @@
     </div>
     <h1 class="text-3xl font-bold mb-6 text-center text-[#0c1a3c]">Visitor Information Form</h1>
     
+    <div id="form-wrapper">
     <form
         action="https://script.google.com/macros/s/AKfycbyqMikA27xFafHgze70Pd_I9-VtXE9v0zq7XHRS9PibLdb3i55iv9A7kS6IJDgEOUWMPQ/exec"
         method="POST"
@@ -78,13 +79,40 @@
       <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
 
         <!-- Confirmation Alert -->
-        <script>
+        <!-- <script>
         document.querySelector("form").addEventListener("submit", function () {
             alert("Submitting form..."); 
         });
-        </script>
+        </script> -->
+        <script>
+  function handleFormSubmit() {
+    setTimeout(() => {
+      // Hide the form
+      document.getElementById("form-wrapper").classList.add("hidden");
+      // Show the thank-you message
+      document.getElementById("thank-you").classList.remove("hidden");
+    }, 1000); // Delay so the form finishes submitting to the iframe
+  }
+</script>
+
+<style>
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.6s ease-out forwards;
+  }
+</style>
 
     </form>
+    </div>
+    <div id="thank-you" class="hidden text-center p-6 bg-white rounded-lg shadow-lg animate-fade-in">
+  <h2 class="text-2xl font-bold text-[#0c1a3c] mb-2">Thank you for visiting!</h2>
+  <p class="text-gray-700 mb-4">We're so glad you joined us today. If you requested updates, you’ll hear from us soon.</p>
+  <p class="italic text-sm text-gray-500">“For where two or three gather in my name, there am I with them.” – Matthew 18:20</p>
+</div>
   </div>
 </body>
 </html>
