@@ -15,7 +15,14 @@
       <img class="h-16" src="images/logo.png" alt="New Life Fellowship Logo">
     </div>
     <h1 class="text-3xl font-bold mb-6 text-center text-[#0c1a3c]">Visitor Information Form</h1>
-    <form id="visitor-form" class="space-y-5">
+    <!-- <form id="visitor-form" class="space-y-5"> -->
+        <form
+  action="https://script.google.com/macros/s/AKfycby0uAtJkThRZkaTlm9VG0OMsA7hIpXEL4S3uA_XiB6fMuKgFb9xkl1nWkPQhLvVkWAI/exec"
+  method="POST"
+  target="hidden_iframe"
+  onsubmit="submitted=true;"
+  class="space-y-5"
+>
       <div>
         <label class="block mb-1 font-semibold text-gray-800">Full Name</label>
         <input type="text" name="name" class="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#0c1a3c]" required>
@@ -68,10 +75,11 @@
       <div class="text-center">
         <button type="submit" class="bg-[#0c1a3c] text-white font-semibold px-6 py-2 rounded hover:bg-[#e4b13f] transition duration-300">Submit</button>
       </div>
+      <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
     </form>
   </div>
 
-  <script>
+  <!-- <script>
   document.getElementById("visitor-form").addEventListener("submit", async function (e) {
     e.preventDefault();
     const form = e.target;
@@ -97,6 +105,6 @@
       alert("Something went wrong.");
     }
   });
-</script>
+</script> -->
 </body>
 </html>
