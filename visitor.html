@@ -84,27 +84,7 @@
             alert("Submitting form..."); 
         });
         </script> -->
-        <script>
-  function handleFormSubmit() {
-    setTimeout(() => {
-      // Hide the form
-      document.getElementById("form-wrapper").classList.add("hidden");
-      // Show the thank-you message
-      document.getElementById("thank-you").classList.remove("hidden");
-    }, 1000); // Delay so the form finishes submitting to the iframe
-  }
-</script>
-
-<style>
-  @keyframes fade-in {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .animate-fade-in {
-    animation: fade-in 0.6s ease-out forwards;
-  }
-</style>
+      
 
     </form>
     </div>
@@ -114,5 +94,26 @@
   <p class="italic text-sm text-gray-500">“For where two or three gather in my name, there am I with them.” – Matthew 18:20</p>
 </div>
   </div>
+    <script>
+        function handleFormSubmit() {
+            setTimeout(() => {
+            // Hide the form
+            document.getElementById("form-wrapper").classList.add("hidden");
+            // Show the thank-you message
+            document.getElementById("thank-you").classList.remove("hidden");
+            }, 1000); // Delay so the form finishes submitting to the iframe
+        }
+    </script>
+
+        <style>
+        @keyframes fade-in {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-fade-in {
+            animation: fade-in 0.6s ease-out forwards;
+        }
+        </style>
 </body>
 </html>
