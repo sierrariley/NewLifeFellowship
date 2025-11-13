@@ -57,6 +57,226 @@
       
       </head>
  
+<!-- === NLF: Popup for Text In Church === -->
+<div
+  id="nlfModal"
+  class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50"
+  aria-hidden="true"
+>
+  <div
+    class="bg-white max-w-md w-full mx-4 rounded-2xl shadow-2xl p-6 relative text-center nlf-modal-panel"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="nlfTitle"
+    aria-describedby="nlfDesc"
+  >
+    <!-- Close button -->
+    <button
+      id="nlfCloseBtn"
+      type="button"
+      aria-label="Close"
+      class="absolute top-3 right-3 text-gray-400 hover:text-gray-600 focus:outline-none"
+    >
+      ×
+    </button>
+
+    <!-- Logo -->
+    <img
+      src="images/logo.png"
+      alt="New Life Fellowship Logo"
+      class="h-12 mx-auto mb-3"
+    />
+
+    <!-- Heading + text -->
+    <h2 id="nlfTitle" class="text-xl font-bold">
+      Stay In The Loop
+    </h2>
+    <p id="nlfDesc" class="mt-2 text-gray-700">
+      Get service reminders, events, and updates from
+      <br><b>New Life Fellowship</b>.
+    </p>
+
+    <!-- Actions -->
+    <div class="mt-6 flex flex-wrap items-center justify-center gap-3">
+      <a
+        id="nlfCta"
+        href="#"
+        target="_blank"
+        rel="noopener"
+        class="inline-flex items-center justify-center rounded-xl bg-green-800 px-4 py-2 text-sm font-semibold text-white hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-offset-2 focus:ring-offset-white"
+      >
+        Sign up!
+      </a>
+      <button
+        id="nlfDismiss"
+        type="button"
+        class="inline-flex items-center justify-center rounded-xl bg-gray-100 px-4 py-2 text-sm font-semibold text-gray-800 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white"
+      >
+        No thanks
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function () {
+    // --- CONFIG ---
+    const FORM_URL =
+      "https://app.textinchurch.com/groups/familyform/lZtY4e1roq0Flj7Kmab8";
+    const SHOW_DELAY_MS = 6000; // open after 6s (also opens on exit-intent)
+    const SUPPRESS_DAYS = 14; // don't show again for this many days (0 = always show)
+    const USE_EXIT_INTENT = true; // show on mouseout top
+    const USE_SCROLL_TRIGGER = true; // show after 30% scroll if not shown yet
+    // --------------
+
+    const storeKey = "nlf_popup_last_seen_v1";
+    const modal = document.getElementById("nlfModal");
+    const closeBtn = document.getElementById("nlfCloseBtn");
+    const dismissBtn = document.getElementById("nlfDismiss");
+    const cta = document.getElementById("nlfCta");
+    let lastFocused = null;
+
+    // Build CTA href with UTM tags for tracking
+    const params = new URLSearchParams({
+      utm_source: "website",
+      utm_medium: "popup",
+      utm_campaign: "family_form",
+    });
+    cta.href =
+      FORM_URL + (FORM_URL.includes("?") ? "&" : "?") + params.toString();
+
+    function daysSince(ts) {
+      return (Date.now() - ts) / 86400000;
+    }
+    function recentlySeen() {
+      try {
+        const ts = +localStorage.getItem(storeKey) || 0;
+        return ts && daysSince(ts) < SUPPRESS_DAYS;
+      } catch (e) {
+        return false;
+      }
+    }
+    function markSeen() {
+      try {
+        localStorage.setItem(storeKey, String(Date.now()));
+      } catch (e) {}
+    }
+
+    let firstFocusable = null;
+    let lastFocusable = null;
+
+    function setFocusTrap() {
+      const focusables = modal.querySelectorAll(
+        'a, button, [tabindex]:not([tabindex="-1"])'
+      );
+      firstFocusable = focusables[0] || null;
+      lastFocusable = focusables[focusables.length - 1] || firstFocusable;
+
+      if (firstFocusable) {
+        firstFocusable.focus();
+      }
+    }
+
+    function openModal() {
+      if (!modal.classList.contains("hidden")) return;
+      markSeen();
+      lastFocused = document.activeElement;
+
+      modal.classList.remove("hidden");
+      modal.classList.add("flex");
+      modal.setAttribute("aria-hidden", "false");
+
+      setFocusTrap();
+    }
+
+    function closeModal() {
+      if (modal.classList.contains("hidden")) return;
+
+      modal.classList.add("hidden");
+      modal.classList.remove("flex");
+      modal.setAttribute("aria-hidden", "true");
+
+      if (lastFocused && lastFocused.focus) {
+        lastFocused.focus();
+      }
+    }
+
+    // Handle keyboard (Esc + Tab focus trap)
+    modal.addEventListener("keydown", function (e) {
+      if (modal.classList.contains("hidden")) return;
+
+      if (e.key === "Escape") {
+        e.preventDefault();
+        return closeModal();
+      }
+
+      if (e.key === "Tab" && firstFocusable && lastFocusable) {
+        if (e.shiftKey && document.activeElement === firstFocusable) {
+          e.preventDefault();
+          lastFocusable.focus();
+        } else if (!e.shiftKey && document.activeElement === lastFocusable) {
+          e.preventDefault();
+          firstFocusable.focus();
+        }
+      }
+    });
+
+    // Close on backdrop click
+    modal.addEventListener("click", function (e) {
+      if (e.target === modal) {
+        closeModal();
+      }
+    });
+
+    closeBtn.addEventListener("click", closeModal);
+    dismissBtn.addEventListener("click", closeModal);
+
+    // Triggers: delay, exit-intent, scroll
+    function scheduleOpen() {
+      if (recentlySeen()) return;
+
+      setTimeout(() => {
+        if (!recentlySeen()) openModal();
+      }, SHOW_DELAY_MS);
+
+      if (USE_EXIT_INTENT) {
+        document.addEventListener("mouseout", function onOut(e) {
+          if (recentlySeen()) {
+            document.removeEventListener("mouseout", onOut);
+            return;
+          }
+          if (!e.relatedTarget && e.clientY <= 0) {
+            openModal();
+            document.removeEventListener("mouseout", onOut);
+          }
+        });
+      }
+
+      if (USE_SCROLL_TRIGGER) {
+        const onScroll = () => {
+          const maxScroll =
+            document.documentElement.scrollHeight - window.innerHeight;
+          const scrolled = maxScroll > 0 ? window.scrollY / maxScroll : 0;
+
+          if (scrolled >= 0.3 && !recentlySeen()) {
+            openModal();
+            window.removeEventListener("scroll", onScroll);
+          }
+        };
+        window.addEventListener("scroll", onScroll);
+      }
+    }
+
+    // Defer setup until the page is idle/ready
+    if ("requestIdleCallback" in window) {
+      requestIdleCallback(scheduleOpen, { timeout: 3000 });
+    } else {
+      setTimeout(scheduleOpen, 1500);
+    }
+  })();
+</script>
+<!-- === /NLF: Popup === -->
+
 <body class="font-sans text-gray-800 pt-20">
 
     <!-- Hero Section -->
